@@ -1,5 +1,9 @@
 from fastapi import FastAPI
-from app.routes import agent
+from app.routes import router
+from app.database import Base, engine
 
-app = FastAPI(title="Agent Builder API")
-app.include_router(agent.router, prefix="/api/v1", tags=["Agents"])
+app = FastAPI()
+
+Base.metadata.create_all(bind=engine)
+
+app.include_router(router.router)
