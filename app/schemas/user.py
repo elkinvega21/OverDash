@@ -1,3 +1,4 @@
+# En app/schemas/user.py
 from pydantic import BaseModel, EmailStr
 from typing import Optional
 
@@ -12,5 +13,7 @@ class UserCreate(UserBase):
 class UserResponse(UserBase):
     id: int
 
-    class Config:
-        orm_mode = True  # Muy importante para que funcione con SQLAlchemy
+    # Para Pydantic V2
+    model_config = {
+        "from_attributes": True  # Reemplaza a orm_mode = True
+    }
