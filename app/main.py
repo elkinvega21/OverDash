@@ -1,9 +1,10 @@
 from fastapi import FastAPI
-from app.routes import router
-from app.database import Base, engine
+from app.routes.user import router as user_router
 
 app = FastAPI()
 
-Base.metadata.create_all(bind=engine)
+@app.get("/")
+def read_root():
+    return {"message": "¡Hola desde FastAPI!"}
 
-app.include_router(router.router)
+app.include_router(user_router)

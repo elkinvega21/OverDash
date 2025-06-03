@@ -7,3 +7,8 @@ python-dotenv
 psycopg2-binary
 twilio
 python-dotenv
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+python-dotenv
